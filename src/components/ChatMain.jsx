@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
 import "./chatmain.css"
 import reactsvg from "../assets/react.svg"
+import { myIcons } from '../assets/myassets'
 
 const ChatMain = () => {
     const [isBar,setIsBar]=useState(false)
   return (
     <div className='chat-main'>
         <div className="chat-sidebar-laptop" onMouseEnter={() => setIsBar(!isBar)} 
-                                 onMouseLeave={()=>setIsBar(!isBar)}
-                                style={{ width: `${isBar?250:50}px` }}
->
+            onMouseLeave={()=>setIsBar(!isBar)}
+            style={{ width: `${isBar?250:50}px` }}>
+                <div className="chat-sidebar-first">
+                    <img src={myIcons.expand_icon} alt="" />
+                    <img src={myIcons.plus_icon} alt="" />
+                </div>
+                <div className="chat-sidebar-second">
+                    <img src={myIcons.setting_icon} alt="" />
+                </div>
         </div>
         <div className="chat-sidebar-tablet" onMouseEnter={() => setIsBar(!isBar)} 
                                 onClick={()=>setIsBar(!isBar)}
