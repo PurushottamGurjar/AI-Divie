@@ -20,7 +20,7 @@
 }
 .chat-header{
     display:flex;
-    background-color:  #202951;
+     /* background-color:  #202951;  */
     justify-content: space-between;
     align-items: center;
     height:45px;
