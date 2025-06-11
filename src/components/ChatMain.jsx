@@ -3,16 +3,24 @@ import "./chatmain.css"
 import reactsvg from "../assets/react.svg"
 
 const ChatMain = () => {
-    const [barlength,setBarlength]=useState(true)
+    const [isBar,setIsBar]=useState(false)
   return (
     <div className='chat-main'>
-        <div className="sidebar" onClick={() => setBarlength(!barlength)} style={{ width: `${barlength?250:50}px` }}
+        <div className="chat-sidebar-laptop" onMouseEnter={() => setIsBar(!isBar)} 
+                                 onMouseLeave={()=>setIsBar(!isBar)}
+                                style={{ width: `${isBar?250:50}px` }}
+>
+        </div>
+        <div className="chat-sidebar-tablet" onMouseEnter={() => setIsBar(!isBar)} 
+                                onClick={()=>setIsBar(!isBar)}
+                                style={{ width: `${isBar?250:50}px` }}
 >
 
         </div>
-        <div className="chat-body" style={{width: `calc(100vw - 50px)`}}>
+
+        <div className="chat-body" >
             <div className="chat-header">
-                <div className="ai-name">AI-Divie</div>
+                <div className="ai-name" style={{marginLeft:`${isBar?250:50}px`}}>AI-Divie</div>
                 <div>
                     <img className='chat-profile-img' src={reactsvg} alt="image" />
                 </div>
