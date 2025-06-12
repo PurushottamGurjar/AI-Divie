@@ -5,6 +5,8 @@ import { myIcons } from "../assets/myassets";
 
 const ChatMain = () => {
   const [isBar, setIsBar] = useState(false);
+  const [prompt,setPrompt]=useState("");
+  console.log(prompt);
   return (
     <div className="chat-main">
       <div
@@ -53,7 +55,26 @@ const ChatMain = () => {
         </div>
         <div className="chat-main-content"></div>
         <div className="chat-search-box">
-          <div className="chat-search-box-inner"></div>
+          <div className="chat-search-box-inner">
+            <div className="search-body-first">
+              <textarea 
+              className="chat-search-prompt"
+              type="text" 
+              value={prompt}
+              placeholder="How can i help you ?"
+              onChange={(e)=>setPrompt(e.target.value)}
+            />
+            </div>
+            <div className="search-body-second">
+              <div className="search-body-second-first">
+                <img src={myIcons.plus_icon} alt="" className="search-box-plus" />
+              <div className="search-box-deepsearch"> Research</div>
+              <div className="search-box-deepsearch">Reasoning</div>
+              </div>
+              <img src={myIcons.send_icon} alt="" className="search-box-plus" />
+             
+            </div>
+          </div>
         </div>
       </div>
     </div>
