@@ -8,8 +8,9 @@ export const ChatContext=createContext();
 
 const Context = ({children}) => {
     const [isBar, setIsBar] = useState(false);
-    const [prompt,setPrompt]=useState("");
+    const [prompt,setPrompt]=useState("Explain me about IIT Kharagpur");
     const [isResponse, setIsResponse]=useState(false);
+    const [apiResponse, setApiResponse]=useState();
     
 
     const HandleSend= async ()=>{
@@ -22,7 +23,9 @@ const Context = ({children}) => {
         isBar,setIsBar,
         prompt,setPrompt,
         isResponse, setIsResponse,
+        apiResponse, setApiResponse,
         HandleSend,
+
     }
 
   return (

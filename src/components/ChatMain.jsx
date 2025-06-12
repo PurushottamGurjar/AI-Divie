@@ -4,6 +4,7 @@ import reactsvg from "../assets/react.svg";
 import { myIcons } from "../assets/myassets";
 import { useContext } from "react";
 import { ChatContext } from "../context/Context";
+import GeminiResponse from "../config/Divie";
 
 
 const ChatMain = () => {
@@ -11,6 +12,7 @@ const ChatMain = () => {
   const {isBar,setIsBar,
         prompt,setPrompt,
         isResponse, setIsResponse,
+        apiResponse, setApiResponse,
         HandleSend
 
 
