@@ -53,7 +53,11 @@ const ChatMain = () => {
             <img className="chat-profile-img" src={reactsvg} alt="image"  />
           </div>
         </div>
-        <div className="chat-main-content"></div>
+        <div className="chat-main-content">
+            <div className="chat-home-heading">Hi Developer , Welcome to AI-Divie</div>
+            <div className="chat-home-subheading">Welcome to the AI- Divie . Where Divie stands for My Small World "(Meri Choti si Duniya..)"</div>
+
+        </div>
         <div className="chat-search-box">
           <div className="chat-search-box-inner">
             <div className="search-body-first">
