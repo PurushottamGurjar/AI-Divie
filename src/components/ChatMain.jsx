@@ -2,18 +2,20 @@ import React, { useRef, useState } from "react";
 import "./chatmain.css";
 import reactsvg from "../assets/react.svg";
 import { myIcons } from "../assets/myassets";
+import { useContext } from "react";
+import { ChatContext } from "../context/Context";
+
 
 const ChatMain = () => {
-  const [isBar, setIsBar] = useState(false);
-  const [prompt,setPrompt]=useState("");
-  const [isResponse, setIsResponse]=useState(false);
+
+  const {isBar,setIsBar,
+        prompt,setPrompt,
+        isResponse, setIsResponse,
+        HandleSend
 
 
-  const HandleSend= async ()=>{
-     setIsResponse(true);
-     setPrompt("");
+  }=useContext(ChatContext);
 
-  }
 
 
   console.log(prompt);
@@ -69,7 +71,7 @@ const ChatMain = () => {
         </div>
         <div className="chat-main-content">
             {!isResponse && <div className="chat-home-heading">Hi Developer , Welcome to AI-Divie</div>}
-            {!isResponse && <div className="chat-home-subheading">Welcome to the AI- Divie . Where Divie stands for My Small World ( " Meri Choti si Duniya.. " )</div>}
+            {!isResponse && <div className="chat-home-subheading">Welcome to the AI- Divie . Divie stands for My Small World ( " Meri Choti si Duniya.. " )</div>}
 
         </div>
         <div className="chat-search-box">
