@@ -1,6 +1,8 @@
 import React from 'react'
 import {useState } from "react"
 import { createContext } from 'react';
+import AIDivie from '../components/AIDivie';
+import main from '../components/Main';
 
 
 
@@ -16,6 +18,12 @@ const Context = ({children}) => {
     const HandleSend= async ()=>{
         setIsResponse(true);
         setPrompt("");
+        console.log("Entering main");
+        main();
+        console.log("Exiting main");
+        // const response= await AIDivie({prompt});
+        // setApiResponse(response);
+
     }
 
     

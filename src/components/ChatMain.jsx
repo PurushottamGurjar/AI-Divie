@@ -4,7 +4,7 @@ import reactsvg from "../assets/react.svg";
 import { myIcons } from "../assets/myassets";
 import { useContext } from "react";
 import { ChatContext } from "../context/Context";
-import GeminiResponse from "../config/Divie";
+import AIDivie from "./AIDivie";
 
 
 const ChatMain = () => {
