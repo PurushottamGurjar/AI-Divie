@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./chatmain.css";
 import reactsvg from "../assets/react.svg";
 import { myIcons } from "../assets/myassets";
@@ -8,8 +8,11 @@ const ChatMain = () => {
   const [prompt,setPrompt]=useState("");
   const [isResponse, setIsResponse]=useState(false);
 
-  const HandleSend= async()=>{
-    await setIsResponse(true);
+
+  const HandleSend= async ()=>{
+     setIsResponse(true);
+     setPrompt("");
+
   }
 
 
@@ -24,7 +27,11 @@ const ChatMain = () => {
       >
         <div className="chat-sidebar-first">
           <img  className="chat-sidebar-eachicon chat-expand" src={myIcons.expand_icon} alt="Expand" />
-          <img  className="chat-sidebar-eachicon chat-plus"  src={myIcons.plus_icon} alt="New Chat" />
+          <div className="chat-sidebar-newchat-container">
+             <img  className="chat-sidebar-eachicon chat-plus"  src={myIcons.plus_icon} alt="New Chat" />
+             {isBar &&  <div className="chat-sidebar-newchat-text">New chat</div>
+              }
+          </div>
         </div>
         <div className="chat-sidebar-second">
           <img className="chat-sidebar-eachicon"  src={myIcons.setting_icon} alt="" />

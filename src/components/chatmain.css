@@ -24,6 +24,33 @@
     padding:10px;
     padding-top: 15px;
 }
+
+.chat-sidebar-newchat-container{
+    display:flex;
+    gap:3px;
+    align-items: center;
+    padding:3px;
+}
+.chat-sidebar-newchat-text{
+    font-size:22px;
+    font-family: sans-serif;
+    color:white;
+    margin-top: 1px;
+    
+}
+.chat-sidebar-newchat-container:hover{
+    border-radius:4px;
+    background-color:#08123E;
+    box-sizing: border-box;
+    width:150px;
+    
+}
+
+
+
+
+
+
 .chat-header{
     display:flex;
      /* background-color:  #202951;  */
@@ -34,7 +61,10 @@
 .ai-name{
     color:white;
     font-size :30px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:sans-serif;
+    letter-spacing: 3px;
 }
 .chat-expand-name{
     display: flex;
