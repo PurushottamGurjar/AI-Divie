@@ -115,11 +115,10 @@
 .chat-home-heading{
     font-size:50px;
     color:goldenrod;
-    padding-left: 10%;
+    /* padding-left: 10%; */
 }
 .chat-home-subheading{
     font-size: 25px;
-    padding-left: 10%;
     color:aqua;
     
 }

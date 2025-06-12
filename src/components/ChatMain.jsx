@@ -6,6 +6,13 @@ import { myIcons } from "../assets/myassets";
 const ChatMain = () => {
   const [isBar, setIsBar] = useState(false);
   const [prompt,setPrompt]=useState("");
+  const [isResponse, setIsResponse]=useState(false);
+
+  const HandleSend= async()=>{
+    await setIsResponse(true);
+  }
+
+
   console.log(prompt);
   return (
     <div className="chat-main">
@@ -54,8 +61,8 @@ const ChatMain = () => {
           </div>
         </div>
         <div className="chat-main-content">
-            <div className="chat-home-heading">Hi Developer , Welcome to AI-Divie</div>
-            <div className="chat-home-subheading">Welcome to the AI- Divie . Where Divie stands for My Small World "(Meri Choti si Duniya..)"</div>
+            {!isResponse && <div className="chat-home-heading">Hi Developer , Welcome to AI-Divie</div>}
+            {!isResponse && <div className="chat-home-subheading">Welcome to the AI- Divie . Where Divie stands for My Small World ( " Meri Choti si Duniya.. " )</div>}
 
         </div>
         <div className="chat-search-box">
@@ -75,7 +82,7 @@ const ChatMain = () => {
               <div className="search-box-deepsearch"> Research</div>
               <div className="search-box-deepsearch">Reasoning</div>
               </div>
-              <img src={myIcons.send_icon} alt="" className="search-box-plus" />
+              <img src={myIcons.send_icon} alt="send" className="search-box-plus" onClick={HandleSend} />
              
             </div>
           </div>
