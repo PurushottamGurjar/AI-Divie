@@ -1,15 +1,18 @@
 
 
+// node --version # Should be >= 18
+// npm install @google/generative-ai
+
 import {
   GoogleGenerativeAI,
   HarmCategory,
   HarmBlockThreshold,
 } from "@google/generative-ai";
 
-const MODEL_NAME = "gemini-1.0-pro";
+const MODEL_NAME = "gemini-1.5-flash";
 const API_KEY = import.meta.env.VITE_MY_AI_API_KEY;
 
-async function runChat() {
+async function runChat(prompt) {
   const genAI = new GoogleGenerativeAI(API_KEY);
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
@@ -46,7 +49,7 @@ async function runChat() {
     ],
   });
 
-  const result = await chat.sendMessage("how does iits emerge explain in detail");
+  const result = await chat.sendMessage(prompt);
   const response = result.response;
   console.log(response.text());
   return response.text();

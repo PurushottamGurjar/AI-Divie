@@ -1,8 +1,7 @@
 import React from 'react'
 import {useState } from "react"
 import { createContext } from 'react';
-
-import {main} from "../components/GeminAPI"
+import runChat from '../config/Gemini';
 
 
 
@@ -18,7 +17,9 @@ const Context = ({children}) => {
     const HandleSend= async ()=>{
         setIsResponse(true);
         setPrompt("");
-        main();
+        let response=await runChat("how does iits started give a long story");
+        console.log("Hi is this working");
+        console.log(response);
         
 
     }
