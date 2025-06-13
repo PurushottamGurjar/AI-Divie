@@ -13,6 +13,9 @@ const ChatMain = () => {
         prompt,setPrompt,
         isResponse, setIsResponse,
         apiResponse, setApiResponse,
+        isLoading, setIsLoading,
+        prevPrompts,setPrevPrompts,
+        recentPrompt,setRecentPrompt,
         HandleSend
 
 
@@ -74,7 +77,26 @@ const ChatMain = () => {
         <div className="chat-main-content">
             {!isResponse && <div className="chat-home-heading">Hi Developer , Welcome to AI-Divie</div>}
             {!isResponse && <div className="chat-home-subheading">Welcome to the AI- Divie . Divie stands for My Small World ( " Meri Choti si Duniya.. " )</div>}
+           
 
+
+
+            {isResponse && <div className="chat-response-container">
+              <div className="prompt-container">
+                <img className="response-prompt-img" src={myIcons.message_icon} alt="" />
+                <div className="response-prompt-text">{recentPrompt}</div>
+              </div>
+              <div className="response-container">
+              <img className="gemini-response-img" src={myIcons.message_icon} alt="" />
+              <div  dangerouslySetInnerHTML={{__html:apiResponse}} className="response-text"/>
+              </div>
+            </div>
+            
+            }
+            {console.log(prompt)}
+  
+            
+               
         </div>
         <div className="chat-search-box">
           <div className="chat-search-box-inner">

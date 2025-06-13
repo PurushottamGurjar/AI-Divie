@@ -138,7 +138,31 @@
     display:flex;
     gap:40px;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
+}
+
+
+.prompt-container{
+    display:flex;
+    gap:20px;
+}
+.response-prompt-text{
+    font-size:20px;
+    font-family:sans-serif;
+    align-self: flex-start;
+    color:white;
+}
+
+.response-container{
+display:flex;
+gap:20px;
+}
+
+.response-text{
+    font-size:20px;
+    font-family:sans-serif;
+    align-self: flex-start;
+    color:white;
 }
 
 
