@@ -13,13 +13,46 @@ const ChatMain = () => {
   const [prevPrompts, setPrevPrompts] = useState([]);
   const [lastPrompt, setLastPrompt] = useState("");
 
+
+  const delayPara=(i,word)=>{
+    setTimeout(() => {
+      setApiResponse(prev=>prev+word);
+    }, 25*i);
+  }
+
+
   const HandleSend = async () => {
     setIsResponse(true);
     setLastPrompt(prompt);
     setPrompt("");
     setIsLoading(true);
     let response = await runChat(prompt);
-    setApiResponse(response);
+    console.log(response);
+
+    //taking headlines
+    let resArray=response.split("**");
+    let newboldArray=[""];
+    for(let i=0; i<resArray.length; i++){
+      if(i%2==1){
+        newboldArray+="<b>"+resArray[i]+"</b>";
+      }
+      else{
+        newboldArray+=resArray[i];
+      }
+    }
+
+    // adding in new lines
+    setApiResponse("");
+    let newbrArray=newboldArray.split("*").join("<br> <br>")
+    resArray=newbrArray.split(";").join("<br>");
+    let typeArray=resArray.split(" ");
+    for(let i=0; i<typeArray.length; i++){
+      let word=typeArray[i]+" ";
+      delayPara(i,word);
+    }
+  
+    
+
     setIsLoading(false);
   };
 
