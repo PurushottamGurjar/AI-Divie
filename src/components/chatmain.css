@@ -103,7 +103,7 @@
 .chat-search-box-inner{
     background-color:  #202951;
     height:100%;
-    width:65%;
+    width:100%;
     border-radius: 20px;
 
 }
@@ -337,12 +337,25 @@
         display:none;
     }
 }
+
 @media(min-width:1022px){
     .chat-sidebar-tablet{
         display:none;
     }
     .chat-mobile-expand{
         display:none;
+    }
+    .chat-main-content{
+        height:calc(100vh - 200px);
+        width:clamp(60rem,70vw,80rem)
+    }
+    .chat-search-box{
+        width:clamp(50rem,68vw,75rem);
+        background-color: #fff;
+        align-self: center;
+        margin-left: 50px;
+        border-radius: 23px;
+
     }
 }
 
@@ -351,7 +364,6 @@
 .code-block {
   background-color: #000;
   color: #00ff00; 
-
   padding: 16px;
   border-radius: 8px;
   font-family: 'Courier New', monospace;
