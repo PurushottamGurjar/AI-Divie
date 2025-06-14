@@ -14,80 +14,78 @@ const ChatMain = () => {
   const [lastPrompt, setLastPrompt] = useState("");
 
 
-  const delayPara=(i,word)=>{
-    setTimeout(() => {
-      setApiResponse(prev=>prev+word);
-    }, 25*i);
-  }
+  const delayPara = (i, word) => {
+  setTimeout(() => {
+    setApiResponse((prev) => prev + word);
+  }, 25 * i);
+};
 
-
-function formatGeminiResponse(rawText) {
-  // Convert triple-backtick code blocks
-  let formatted = rawText.replace(/```([\s\S]*?)```/g, (match, code) => {
-    return `<pre class="code-block"><code>${escapeHtml(code.trim())}</code></pre>`;
-  });
-
-  // Convert **bold**
-  formatted = formatted.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
-
-  // Convert `inline code`
-  formatted = formatted.replace(/`([^`\n]+)`/g, "<code class='inline-code'>$1</code>");
-
-  return formatted;
-}
-
-// Escape HTML to prevent injection
-function escapeHtml(str) {
+const escapeHtml = (str) => {
   return str
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
-}
+};
+const HandleSend = async () => {
+  setIsResponse(true);
+  setLastPrompt(prompt);
+  setPrompt("");
+  setIsLoading(true);
 
+  let response = await runChat(prompt);
+  console.log(response);
 
+  // ✅ Extract code blocks and replace with placeholders
+  const codeBlocks = [];
+  response = response.replace(/```([\s\S]*?)```/g, (match, code) => {
+    const escapedCode = `<pre class="code-block"><code>${escapeHtml(code.trim())}</code></pre>`;
+    codeBlocks.push(escapedCode);
+    return `[[CODE_BLOCK_${codeBlocks.length - 1}]]`;
+  });
 
+  // ✅ Handle **bold** text
+  let resArray = response.split("**");
+  let newboldArray = "";
+  for (let i = 0; i < resArray.length; i++) {
+    if (i % 2 === 1) {
+      newboldArray += "<b>" + resArray[i] + "</b>";
+    } else {
+      newboldArray += resArray[i];
+    }
+  }
 
+  // ✅ Replace * and ; with <br>
+  let newbrArray = newboldArray.split("*").join("<br><br>");
+  newbrArray = newbrArray.split(";").join("<br>");
 
+  // numerating the reesponse
+  newbrArray = newbrArray.replace(/(?<!<br>)\s*(\d+\.)/g, "<br>$1");
 
-  const HandleSend = async () => {
-    setIsResponse(true);
-    setLastPrompt(prompt);
-    setPrompt("");
-    setIsLoading(true);
-    let response = await runChat(prompt);
-    let cleaned = formatGeminiResponse(response);
-    setApiResponse(cleaned);
-    console.log(response);
+  const typeArray = newbrArray.split(" ");
 
+  // ✅ Typing animation on clean text with placeholders
+  setApiResponse("");
+  let temp = "";
 
+  for (let i = 0; i < typeArray.length; i++) {
+    const word = typeArray[i] + " ";
+    setTimeout(() => {
+      temp += word;
+      setApiResponse(temp);
+    }, 25 * i);
+  }
 
+  // ✅ Final replacement of placeholders with actual code blocks
+  setTimeout(() => {
+    let final = temp;
+    codeBlocks.forEach((block, index) => {
+      final = final.replace(`[[CODE_BLOCK_${index}]]`, block);
+    });
+    setApiResponse(final);
+  }, 25 * typeArray.length + 100); // Wait until typing is done
 
-    // //taking headlines
-    // let resArray=response.split("**");
-    // let newboldArray=[""];
-    // for(let i=0; i<resArray.length; i++){
-    //   if(i%2==1){
-    //     newboldArray+="<b>"+resArray[i]+"</b>";
-    //   }
-    //   else{
-    //     newboldArray+=resArray[i];
-    //   }
-    // }
-
-    // // adding in new lines
-    // setApiResponse("");
-    // let newbrArray=newboldArray.split("*").join("<br> <br>")
-    // resArray=newbrArray.split(";").join("<br>");
-    // let typeArray=resArray.split(" ");
-    // for(let i=0; i<typeArray.length; i++){
-    //   let word=typeArray[i]+" ";
-    //   delayPara(i,word);
-    // }
-  
-    
-
-    setIsLoading(false);
-  };
+  setIsLoading(false);
+};
 
   return (
     <div className="chat-main">

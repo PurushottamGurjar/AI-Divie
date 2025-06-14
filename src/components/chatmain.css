@@ -177,6 +177,7 @@
     align-self: flex-start;
     color:white;
     letter-spacing: 1px;
+    line-height-step: 1px;
     font: weight 100px !important;
     
 }
@@ -343,4 +344,22 @@
     .chat-mobile-expand{
         display:none;
     }
+}
+
+
+
+.code-block {
+  background-color: #000;
+  color: #00ff00; 
+
+  padding: 16px;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  white-space: pre-wrap; /* Wrap long lines */
+  word-break: break-word; /* Break long words */
+  overflow-wrap: break-word;
+  max-width: 100%;
+  margin: 16px 0;
 }
