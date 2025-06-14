@@ -21,35 +21,68 @@ const ChatMain = () => {
   }
 
 
+function formatGeminiResponse(rawText) {
+  // Convert triple-backtick code blocks
+  let formatted = rawText.replace(/```([\s\S]*?)```/g, (match, code) => {
+    return `<pre class="code-block"><code>${escapeHtml(code.trim())}</code></pre>`;
+  });
+
+  // Convert **bold**
+  formatted = formatted.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+
+  // Convert `inline code`
+  formatted = formatted.replace(/`([^`\n]+)`/g, "<code class='inline-code'>$1</code>");
+
+  return formatted;
+}
+
+// Escape HTML to prevent injection
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+
+
+
+
+
   const HandleSend = async () => {
     setIsResponse(true);
     setLastPrompt(prompt);
     setPrompt("");
     setIsLoading(true);
     let response = await runChat(prompt);
+    let cleaned = formatGeminiResponse(response);
+    setApiResponse(cleaned);
     console.log(response);
 
-    //taking headlines
-    let resArray=response.split("**");
-    let newboldArray=[""];
-    for(let i=0; i<resArray.length; i++){
-      if(i%2==1){
-        newboldArray+="<b>"+resArray[i]+"</b>";
-      }
-      else{
-        newboldArray+=resArray[i];
-      }
-    }
 
-    // adding in new lines
-    setApiResponse("");
-    let newbrArray=newboldArray.split("*").join("<br> <br>")
-    resArray=newbrArray.split(";").join("<br>");
-    let typeArray=resArray.split(" ");
-    for(let i=0; i<typeArray.length; i++){
-      let word=typeArray[i]+" ";
-      delayPara(i,word);
-    }
+
+
+    // //taking headlines
+    // let resArray=response.split("**");
+    // let newboldArray=[""];
+    // for(let i=0; i<resArray.length; i++){
+    //   if(i%2==1){
+    //     newboldArray+="<b>"+resArray[i]+"</b>";
+    //   }
+    //   else{
+    //     newboldArray+=resArray[i];
+    //   }
+    // }
+
+    // // adding in new lines
+    // setApiResponse("");
+    // let newbrArray=newboldArray.split("*").join("<br> <br>")
+    // resArray=newbrArray.split(";").join("<br>");
+    // let typeArray=resArray.split(" ");
+    // for(let i=0; i<typeArray.length; i++){
+    //   let word=typeArray[i]+" ";
+    //   delayPara(i,word);
+    // }
   
     
 
