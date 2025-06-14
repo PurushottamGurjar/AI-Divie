@@ -15,15 +15,18 @@ const Context = ({ children }) => {
   const [recentPrompt, setRecentPrompt] = useState("");
 
   const HandleSend = async () => {
-    setIsResponse(true);
-    const lastprompt = prompt;
-    setIsLoading(true);
-    let response = await runChat(prompt);
-    setIsLoading(false);
-    setRecentPrompt(prompt);
+    // setIsResponse(true);
+    // const lastprompt = prompt;
+    // setIsLoading(true);
+    // let response = await runChat(prompt);
+    // setIsLoading(false);
+    // setRecentPrompt(prompt);
     
-    setPrevPrompts((prev) => [...prev, prompt]);
-    setPrompt("");
+    // setPrevPrompts((prev) => [...prev, prompt]);
+    // setPrompt("");
+    setIsResponse(true);
+    let response=await runChat(prompt);
+    setApiResponse(response);
 
   };
 

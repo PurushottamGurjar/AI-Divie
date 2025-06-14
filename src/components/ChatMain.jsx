@@ -84,11 +84,11 @@ const ChatMain = () => {
             {isResponse && <div className="chat-response-container">
               <div className="prompt-container">
                 <img className="response-prompt-img" src={myIcons.message_icon} alt="" />
-                <div className="response-prompt-text">{recentPrompt}</div>
+                <div className="response-prompt-text">Tell me more about Indian culture !!!</div>
               </div>
               <div className="response-container">
-              <img className="gemini-response-img" src={myIcons.message_icon} alt="" />
-              <div  dangerouslySetInnerHTML={{__html:apiResponse}} className="response-text"/>
+                <img className="gemini-response-img" src={myIcons.message_icon} alt="" />
+                <div  dangerouslySetInnerHTML={{__html:apiResponse}} className="response-text"/>
               </div>
             </div>
             
