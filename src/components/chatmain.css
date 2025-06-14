@@ -134,11 +134,14 @@
     padding:20px;
     margin:20px;
     box-sizing: border-box;
-    background-color: #272626;
     display:flex;
     gap:40px;
     flex-direction: column;
     overflow-y:scroll;
+}
+
+.chat-main-content::-webkit-scrollbar{
+    display:none;
 }
 
 
