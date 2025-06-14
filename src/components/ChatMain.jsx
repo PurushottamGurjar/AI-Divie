@@ -98,7 +98,7 @@ const ChatMain = () => {
             </div>
           </div>
           <div>
-            <img className="chat-profile-img" src={reactsvg} alt="image" />
+            <img className="chat-profile-img" src={myIcons.gibliImage} alt="image" />
           </div>
         </div>
         <div className="chat-main-content">
@@ -119,21 +119,21 @@ const ChatMain = () => {
               <div className="prompt-container">
                 <img
                   className="response-prompt-img"
-                  src={myIcons.message_icon}
-                  alt=""
+                  src={myIcons.gibliImage}
+                  alt="AI-Divie"
                 />
                 <div className="response-prompt-text">{lastPrompt}</div>
               </div>
               <div className="response-container">
                 <img
                   className="gemini-response-img"
-                  src={myIcons.message_icon}
+                  src={myIcons.aiDivieImg}
                   alt=""
                 />
                 {isLoading ?
                   <div className="chat-loading-animation">
-                    <hr className="loading-hr"/>
-                    <hr className="loading-hr" />
+                    <hr className="loading-hr "/>
+                    <hr className="loading-hr " />
                     <hr className="loading-hr" />
                   </div>
                 :
