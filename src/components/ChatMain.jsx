@@ -43,7 +43,7 @@ const HandleSend = async () => {
     return `[[CODE_BLOCK_${codeBlocks.length - 1}]]`;
   });
 
-  // ✅ Handle **bold** text
+  //handle bold text
   let resArray = response.split("**");
   let newboldArray = "";
   for (let i = 0; i < resArray.length; i++) {
@@ -54,7 +54,7 @@ const HandleSend = async () => {
     }
   }
 
-  // ✅ Replace * and ; with <br>
+  // replacing * ; with break
   let newbrArray = newboldArray.split("*").join("<br><br>");
   newbrArray = newbrArray.split(";").join("<br>");
 
@@ -63,7 +63,7 @@ const HandleSend = async () => {
 
   const typeArray = newbrArray.split(" ");
 
-  // ✅ Typing animation on clean text with placeholders
+  // Typing animation on clean text with placeholders
   setApiResponse("");
   let temp = "";
 
@@ -75,7 +75,7 @@ const HandleSend = async () => {
     }, 25 * i);
   }
 
-  // ✅ Final replacement of placeholders with actual code blocks
+  //Final replacement of placeholders with actual code blocks
   setTimeout(() => {
     let final = temp;
     codeBlocks.forEach((block, index) => {
