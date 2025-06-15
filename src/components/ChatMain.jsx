@@ -18,7 +18,7 @@ const ChatMain = () => {
   setTimeout(() => {
     setApiResponse((prev) => prev + word);
   }, 25 * i);
-};
+  };
 
 const escapeHtml = (str) => {
   return str
