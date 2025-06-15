@@ -82,7 +82,7 @@ const HandleSend = async () => {
       final = final.replace(`[[CODE_BLOCK_${index}]]`, block);
     });
     setApiResponse(final);
-  }, 25 * typeArray.length + 100); // Wait until typing is done
+  }, 25 * typeArray.length + 100); 
 
   setIsLoading(false);
 };
