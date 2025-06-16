@@ -132,11 +132,41 @@ const ChatMain = () => {
               onClick={() => setIsBar(!isBar)}
             />
 
-            v.
+
+            <div className="chat-mobile-sidebar">
+              <div className="ai-name-expand">
+                <img
+              className="chat-mobile-expand"
+              src={myIcons.expand_icon}
+              alt="Expand"
+              onClick={() => setIsBar(!isBar)}
+            />
+              <div
+              className="ai-name"
+              style={{ marginLeft: `${isBar ? 250 : 50}px` }}
+            >
+              AI-Divie
+              {/* <img src={myIcons.AiDivieLogo} alt="" className="aiDivieLogo" /> */}
+            </div> 
+              </div>
+              <div className="mobile-first">
+                <img src={myIcons.plus_icon} alt="" className="mobile-newchat-icon" />
+                <p className="mobile-newchat">New Chat</p>
+              </div>
+              <div className="mobile-setting">
+              <img
+                src={myIcons.setting_icon}
+                alt=""
+                className="mobile-setting-img"
+              />
+              <p className="mobile-setting-text">Settings</p>
+            </div>
+            </div>
+            
 
             <div
               className="ai-name"
-              style={{ marginLeft: `${isBar ? 270 : 0}px` }}
+              style={{ marginLeft: `${isBar ? 250 : 50}px` }}
             >
               AI-Divie
               {/* <img src={myIcons.AiDivieLogo} alt="" className="aiDivieLogo" /> */}
