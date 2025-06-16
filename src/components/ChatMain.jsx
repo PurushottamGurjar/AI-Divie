@@ -11,9 +11,7 @@ const ChatMain = () => {
   const [apiResponse, setApiResponse] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [prevPrompts, setPrevPrompts] = useState([
-    "Hi chatGpt how are you ",
-    "Tell me more about IIT Kharagpur",
-    "How does this world started ",
+    
   ]);
   const [lastPrompt, setLastPrompt] = useState("");
   const [isMenu, setIsMenu] = useState(false);
@@ -23,17 +21,17 @@ const ChatMain = () => {
       setApiResponse((prev) => prev + word);
     }, 25 * i);
   };
-
+ 
   const escapeHtml = (str) => {
     return str
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;");
   };
-  const HandleSend = async () => {
+  const HandleSend = async (prompt) => {
     setIsResponse(true);
     setLastPrompt(prompt);
-    setPrevPrompts((prev) => [...prev, prompt]);
+    setPrevPrompts((prev) => [prompt,...prev]);
     console.log(prevPrompts);
     setPrompt("");
     setIsLoading(true);
@@ -103,14 +101,18 @@ const ChatMain = () => {
         onMouseLeave={() => setIsBar(!isBar)}
         style={{ width: `${isBar ? 250 : 50}px` }}
       >
-        <div className="chat-sidebar-first">
+        {!isBar ?
+          <div className=""> 
+          <div className="chat-sidebar-first">
           <img
             className="chat-sidebar-eachicon chat-expand"
             src={myIcons.expand_icon}
             alt="Expand"
             onClick={() => setIsMenu(true)}
           />
-          <div className="chat-sidebar-newchat-container">
+          <div className="chat-sidebar-newchat-container"
+         
+          >
             <img
               className="chat-sidebar-eachicon chat-plus"
               src={myIcons.plus_icon}
@@ -121,13 +123,75 @@ const ChatMain = () => {
         </div>
         <div className="chat-sidebar-second">
           <img
-            className="chat-sidebar-eachicon"
+            className="chat-sidebar-eachicon chat-setting"
             src={myIcons.setting_icon}
             alt=""
           />
         </div>
-      </div>
+          </div> :
+          <div className="">
+             <div className="ai-name-expand" style={{marginBottom:"20px"}}>
+                  <img
+                    className="chat-mobile-expand"
+                    src={myIcons.expand_icon}
+                    alt="Expand"
+                    onClick={() => setIsMenu(false)}
+                    style={{width:"25px"}}
+                  />
+                  <div
+                    className="ai-name"
+                    style={{fontSize:'20px', marginTop:"3px"}}
+                   
+                  >
+                  Menu
+                  </div>
+                </div>
+                <div className="mobile-first" style={{marginBottom:"20px"}}
+                 onClick={()=>setIsResponse(false)}
+                >
+                  <img
+                    src={myIcons.plus_icon}
+                    alt=""
+                    className="mobile-newchat-icon"
+                  />
+                  <p className="mobile-newchat">New Chat</p>
+                </div>
+                <div className="mobile-setting">
+                  <img
+                    src={myIcons.setting_icon}
+                    alt=""
+                    className="mobile-setting-img"
+                  />
+                  <p className="mobile-setting-text">Settings</p>
+                </div>
+                <div className="mobile-recent-prompt-container">
+                  <p className="recent-text">Recent Chats</p>
+                
+                    <div className="each-recent-prompt">
+                      {prevPrompts.map((item, idx) => (
+                        <div key={idx} className="recent-prompt-item"
+                        onClick={async()=>{
+                          await setPrompt(item);
+                          await HandleSend(item);
+                        }}
+                        >
+                          <img
+                            src={myIcons.message_icon}
+                            alt=""
+                            className="recent-prompt-message-img"
+                          />
+                          <p className="prev-prompt-menu">
+                            {item.slice(0, 50)}...
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                </div>
 
+          </div>
+        }
+
+      </div>
       <div className="chat-body">
         <div className="chat-header">
           <div className="chat-expand-name">
@@ -154,7 +218,9 @@ const ChatMain = () => {
                     AI-Divie
                   </div>
                 </div>
-                <div className="mobile-first">
+                <div className="mobile-first"
+                 onClick={()=>setIsResponse(false)}
+                >
                   <img
                     src={myIcons.plus_icon}
                     alt=""
@@ -175,7 +241,12 @@ const ChatMain = () => {
                 
                     <div className="each-recent-prompt">
                       {prevPrompts.map((item, idx) => (
-                        <div key={idx} className="recent-prompt-item">
+                        <div key={idx} className="recent-prompt-item"
+                        onClick={async()=>{
+                          await setPrompt(item);
+                          await HandleSend(item);
+                        }}
+                        >
                           <img
                             src={myIcons.message_icon}
                             alt=""
@@ -276,7 +347,7 @@ const ChatMain = () => {
                 src={myIcons.send_icon}
                 alt="send"
                 className="search-box-plus"
-                onClick={HandleSend}
+                onClick={()=>HandleSend(prompt)}
               />
             </div>
           </div>

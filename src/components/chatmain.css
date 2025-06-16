@@ -121,6 +121,11 @@
 .chat-plus{
     height:30px;
     width:30px;
+    position:fixed;
+}
+.chat-setting{
+    position: fixed;
+    bottom:20px;
 }
 
 /* stating mobile and tablet sidebar css */
@@ -160,6 +165,7 @@
     background-color: #040c2d;
     margin-left: -5px;
     width:150px;
+    cursor:pointer;
    
 }
 .ai-name-expand{
@@ -185,13 +191,15 @@
     color:wheat;
     display:flex;
     flex-direction: column;
-    gap:5px;
-    font-size:16px;
+    gap:15px;
+    font-size:17px;
+    
 }
 .recent-prompt-item{
     display:flex;
     gap:5px;
     font-family:sans-serif;
+    cursor:pointer;
 }
 .recent-prompt-message-img{
     height:20px;
@@ -525,7 +533,7 @@
 }
 
 @media(min-width:1024px){
-    .chat-mobile-expand{
+    .chat-mobile-sidebar{
         display:none;
     }
     .chat-main-content{
