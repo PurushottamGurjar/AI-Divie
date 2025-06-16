@@ -219,6 +219,7 @@ const HandleSend = async () => {
             </div>
           </div>
         </div>
+        <p className="chat-footer">&copy; AI-Divie | Purushottam Gurjar 2025</p>
       </div>
     </div>
   );
