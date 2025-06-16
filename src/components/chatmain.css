@@ -89,8 +89,8 @@
 
 
 .chat-search-box{
-    /* height:100px; */
-    width:100%;  
+    width:90%; 
+    margin-left: 5%;
     display: flex;
     justify-content: center;
     position:fixed;
@@ -381,7 +381,7 @@
         gap:10px;
     }
     .chat-search-box-inner{
-        width:90%;
+        width:100%;
     }
     .chat-sidebar-laptop{
         display:none;
@@ -402,6 +402,13 @@
     .chat-sidebar-laptop{
         display:none;
     }
+    .chat-main-content {
+        width:80%;
+    }
+    .chat-search-box{
+        width:85%; 
+        margin-left:7.5%; 
+    }
    
 
 }
@@ -411,7 +418,7 @@
         display:none;
     }
     .chat-main-content{
-        height:calc(100vh - 200px);
+        height:calc(100vh - 165px);
         width:clamp(60rem,72vw,80rem);
        
     }
