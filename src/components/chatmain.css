@@ -130,12 +130,14 @@
     width:250px;
     z-index: 501;
     top:0px;
-    background-color: #38478b;
+    background-color:  #202951;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding:20px;
+    gap:20px;
+    padding:10px;
     box-sizing: border-box;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .mobile-setting{
@@ -143,34 +145,59 @@
     display:flex;
     color:white;
     gap:20px;
+    position:fixed;
+    bottom:20px;
 
 }
 .mobile-first{
     display:flex;
     font-size:20px;
     color:white;
-    gap:20px;
+    gap:10px;
     align-items: center;
-    border:2px solid black;
     padding:10px;
     border-radius: 20px;;
     background-color: #040c2d;
-    margin-left: -10px;
+    margin-left: -5px;
+    width:150px;
    
 }
 .ai-name-expand{
     display:flex;
-    gap:20px;
+    gap:10px;
     margin-left: -10px;
+    margin-top: -5px;
 
 }
 .mobile-newchat-icon{
     width:25px;
     height:25px;
 }
-.mobile-newchat{
-
+.recent-text{
+    font-size:20px;
+    color:white;
+    font-family:sans-serif;
+    margin-bottom: 20px;
+   
+    
 }
+.each-recent-prompt{
+    color:wheat;
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+    font-size:16px;
+}
+.recent-prompt-item{
+    display:flex;
+    gap:5px;
+    font-family:sans-serif;
+}
+.recent-prompt-message-img{
+    height:20px;
+    margin-left: -5px;
+}
+
 
 
 

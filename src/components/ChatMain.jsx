@@ -10,8 +10,13 @@ const ChatMain = () => {
   const [isResponse, setIsResponse] = useState(false);
   const [apiResponse, setApiResponse] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [prevPrompts, setPrevPrompts] = useState([]);
+  const [prevPrompts, setPrevPrompts] = useState([
+    "Hi chatGpt how are you ",
+    "Tell me more about IIT Kharagpur",
+    "How does this world started ",
+  ]);
   const [lastPrompt, setLastPrompt] = useState("");
+  const [isMenu, setIsMenu] = useState(false);
 
   const delayPara = (i, word) => {
     setTimeout(() => {
@@ -103,6 +108,7 @@ const ChatMain = () => {
             className="chat-sidebar-eachicon chat-expand"
             src={myIcons.expand_icon}
             alt="Expand"
+            onClick={() => setIsMenu(true)}
           />
           <div className="chat-sidebar-newchat-container">
             <img
@@ -129,47 +135,67 @@ const ChatMain = () => {
               className="chat-mobile-expand"
               src={myIcons.expand_icon}
               alt="Expand"
-              onClick={() => setIsBar(!isBar)}
+              onClick={() => setIsMenu(true)}
             />
 
-
-            <div className="chat-mobile-sidebar">
-              <div className="ai-name-expand">
-                <img
-              className="chat-mobile-expand"
-              src={myIcons.expand_icon}
-              alt="Expand"
-              onClick={() => setIsBar(!isBar)}
-            />
-              <div
-              className="ai-name"
-              style={{ marginLeft: `${isBar ? 250 : 50}px` }}
-            >
-              AI-Divie
-              {/* <img src={myIcons.AiDivieLogo} alt="" className="aiDivieLogo" /> */}
-            </div> 
+            {isMenu && (
+              <div className="chat-mobile-sidebar">
+                <div className="ai-name-expand">
+                  <img
+                    className="chat-mobile-expand"
+                    src={myIcons.expand_icon}
+                    alt="Expand"
+                    onClick={() => setIsMenu(false)}
+                  />
+                  <div
+                    className="ai-name"
+                    style={{ marginLeft: `${isBar ? 250 : 50}px` }}
+                  >
+                    AI-Divie
+                  </div>
+                </div>
+                <div className="mobile-first">
+                  <img
+                    src={myIcons.plus_icon}
+                    alt=""
+                    className="mobile-newchat-icon"
+                  />
+                  <p className="mobile-newchat">New Chat</p>
+                </div>
+                <div className="mobile-setting">
+                  <img
+                    src={myIcons.setting_icon}
+                    alt=""
+                    className="mobile-setting-img"
+                  />
+                  <p className="mobile-setting-text">Settings</p>
+                </div>
+                <div className="mobile-recent-prompt-container">
+                  <p className="recent-text">Recent Chats</p>
+                
+                    <div className="each-recent-prompt">
+                      {prevPrompts.map((item, idx) => (
+                        <div key={idx} className="recent-prompt-item">
+                          <img
+                            src={myIcons.message_icon}
+                            alt=""
+                            className="recent-prompt-message-img"
+                          />
+                          <p className="prev-prompt-menu">
+                            {item.slice(0, 50)}...
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                </div>
               </div>
-              <div className="mobile-first">
-                <img src={myIcons.plus_icon} alt="" className="mobile-newchat-icon" />
-                <p className="mobile-newchat">New Chat</p>
-              </div>
-              <div className="mobile-setting">
-              <img
-                src={myIcons.setting_icon}
-                alt=""
-                className="mobile-setting-img"
-              />
-              <p className="mobile-setting-text">Settings</p>
-            </div>
-            </div>
-            
+            )}
 
             <div
               className="ai-name"
               style={{ marginLeft: `${isBar ? 250 : 50}px` }}
             >
               AI-Divie
-              {/* <img src={myIcons.AiDivieLogo} alt="" className="aiDivieLogo" /> */}
             </div>
           </div>
           <div>
