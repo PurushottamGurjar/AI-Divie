@@ -177,8 +177,7 @@
     align-self: flex-start;
     color:white;
     letter-spacing: 1px;
-    line-height-step: 1px;
-    font: weight 100px !important;
+    font-weight: 100 !important;
     
 }
 
@@ -300,7 +299,20 @@
     }
 }
 
-
+.code-block {
+  background-color: #000;
+  color: #00ff00; 
+  padding: 16px;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  white-space: pre-wrap; /* Wrap long lines */
+  word-break: break-word; /* Break long words */
+  overflow-wrap: break-word;
+  margin: 16px 0;
+  width:100%;
+}
 
 
 
@@ -347,7 +359,7 @@
     }
     .chat-main-content{
         height:calc(100vh - 200px);
-        width:clamp(60rem,70vw,80rem)
+        width:clamp(60rem,72vw,80rem)
     }
     .chat-search-box{
         width:clamp(50rem,68vw,75rem);
@@ -357,21 +369,15 @@
         border-radius: 23px;
 
     }
+    .code-block {
+        width:clamp(48rem,63vw,71rem);
+    }
+    .chat-response-container{
+        width:clamp(48rem,63vw,71rem);
+        
+    }
 }
 
 
 
-.code-block {
-  background-color: #000;
-  color: #00ff00; 
-  padding: 16px;
-  border-radius: 8px;
-  font-family: 'Courier New', monospace;
-  font-size: 16px;
-  line-height: 1.5;
-  white-space: pre-wrap; /* Wrap long lines */
-  word-break: break-word; /* Break long words */
-  overflow-wrap: break-word;
-  max-width: 100%;
-  margin: 16px 0;
-}
+
