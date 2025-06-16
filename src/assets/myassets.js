@@ -8,6 +8,7 @@ import send_icon from "./send.svg"
 import mic_icon from "./mic.svg";
 import aiDivieImg from "./aiDivieImg.png"
 import gibliImage from "./gibliImage.jpeg"
+import AiDivieLogo from "./AiDivieLogo.png"
 
 export const myIcons={
     camera_icon,
@@ -19,5 +20,6 @@ export const myIcons={
     send_icon,
     mic_icon,
     aiDivieImg,
-    gibliImage
+    gibliImage,
+    AiDivieLogo
 }

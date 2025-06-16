@@ -159,6 +159,7 @@ const HandleSend = async () => {
               style={{ marginLeft: `${isBar ? 270 : 70}px` }}
             >
               AI-Divie
+              {/* <img src={myIcons.AiDivieLogo} alt="" className="aiDivieLogo" /> */}
             </div>
           </div>
           <div>
