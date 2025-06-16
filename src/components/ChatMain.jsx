@@ -118,32 +118,7 @@ const HandleSend = async () => {
           />
         </div>
       </div>
-      <div
-        className="chat-sidebar-tablet"
-        onMouseEnter={() => setIsBar(!isBar)}
-        onClick={() => setIsBar(!isBar)}
-        style={{ width: `${isBar ? 250 : 50}px` }}
-      >
-        <div className="chat-sidebar-first">
-          <img
-            className="chat-sidebar-eachicon chat-expand"
-            src={myIcons.expand_icon}
-            alt="Expand"
-          />
-          <img
-            className="chat-sidebar-eachicon chat-plus"
-            src={myIcons.plus_icon}
-            alt="New Chat"
-          />
-        </div>
-        <div className="chat-sidebar-second">
-          <img
-            className="chat-sidebar-eachicon"
-            src={myIcons.setting_icon}
-            alt=""
-          />
-        </div>
-      </div>
+      
 
       <div className="chat-body">
         <div className="chat-header">
@@ -154,6 +129,9 @@ const HandleSend = async () => {
               alt="Expand"
               onClick={() => setIsBar(!isBar)}
             />
+            <div className="mobile-menu">
+              
+            </div>
             <div
               className="ai-name"
               style={{ marginLeft: `${isBar ? 270 : 70}px` }}
