@@ -13,79 +13,82 @@ const ChatMain = () => {
   const [prevPrompts, setPrevPrompts] = useState([]);
   const [lastPrompt, setLastPrompt] = useState("");
 
-
   const delayPara = (i, word) => {
-  setTimeout(() => {
-    setApiResponse((prev) => prev + word);
-  }, 25 * i);
+    setTimeout(() => {
+      setApiResponse((prev) => prev + word);
+    }, 25 * i);
   };
 
-const escapeHtml = (str) => {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
-};
-const HandleSend = async () => {
-  setIsResponse(true);
-  setLastPrompt(prompt);
-  setPrompt("");
-  setIsLoading(true);
+  const escapeHtml = (str) => {
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  };
+  const HandleSend = async () => {
+    setIsResponse(true);
+    setLastPrompt(prompt);
+    setPrevPrompts((prev) => [...prev, prompt]);
+    console.log(prevPrompts);
+    setPrompt("");
+    setIsLoading(true);
 
-  let response = await runChat(prompt);
-  console.log(response);
+    let response = await runChat(prompt);
+    console.log(response);
 
-  // ✅ Extract code blocks and replace with placeholders
-  const codeBlocks = [];
-  response = response.replace(/```([\s\S]*?)```/g, (match, code) => {
-    const escapedCode = `<pre class="code-block"><code>${escapeHtml(code.trim())}</code></pre>`;
-    codeBlocks.push(escapedCode);
-    return `[[CODE_BLOCK_${codeBlocks.length - 1}]]`;
-  });
-
-  //handle bold text
-  let resArray = response.split("**");
-  let newboldArray = "";
-  for (let i = 0; i < resArray.length; i++) {
-    if (i % 2 === 1) {
-      newboldArray += "<b>" + resArray[i] + "</b>";
-    } else {
-      newboldArray += resArray[i];
-    }
-  }
-
-  // replacing * ; with break
-  let newbrArray = newboldArray.split("*").join("<br><br>");
-  newbrArray = newbrArray.split(";").join("<br>");
-
-  // numerating the reesponse
-  newbrArray = newbrArray.replace(/(?<!<br>)\s*(\d+\.)/g, "<br>$1");
-
-  const typeArray = newbrArray.split(" ");
-
-  // Typing animation on clean text with placeholders
-  setApiResponse("");
-  let temp = "";
-
-  for (let i = 0; i < typeArray.length; i++) {
-    const word = typeArray[i] + " ";
-    setTimeout(() => {
-      temp += word;
-      setApiResponse(temp);
-    }, 25 * i);
-  }
-
-  //Final replacement of placeholders with actual code blocks
-  setTimeout(() => {
-    let final = temp;
-    codeBlocks.forEach((block, index) => {
-      final = final.replace(`[[CODE_BLOCK_${index}]]`, block);
+    // ✅ Extract code blocks and replace with placeholders
+    const codeBlocks = [];
+    response = response.replace(/```([\s\S]*?)```/g, (match, code) => {
+      const escapedCode = `<pre class="code-block"><code>${escapeHtml(
+        code.trim()
+      )}</code></pre>`;
+      codeBlocks.push(escapedCode);
+      return `[[CODE_BLOCK_${codeBlocks.length - 1}]]`;
     });
-    setApiResponse(final);
-  }, 25 * typeArray.length + 100); 
 
-  setIsLoading(false);
-};
+    //handle bold text
+    let resArray = response.split("**");
+    let newboldArray = "";
+    for (let i = 0; i < resArray.length; i++) {
+      if (i % 2 === 1) {
+        newboldArray += "<b>" + resArray[i] + "</b>";
+      } else {
+        newboldArray += resArray[i];
+      }
+    }
+
+    // replacing * ; with break
+    let newbrArray = newboldArray.split("*").join("<br><br>");
+    newbrArray = newbrArray.split(";").join("<br>");
+
+    // numerating the reesponse
+    newbrArray = newbrArray.replace(/(?<!<br>)\s*(\d+\.)/g, "<br>$1");
+
+    const typeArray = newbrArray.split(" ");
+
+    // Typing animation on clean text with placeholders
+    setApiResponse("");
+    let temp = "";
+
+    for (let i = 0; i < typeArray.length; i++) {
+      const word = typeArray[i] + " ";
+      setTimeout(() => {
+        temp += word;
+        setApiResponse(temp);
+      }, 25 * i);
+    }
+
+    //Final replacement of placeholders with actual code blocks
+    setTimeout(() => {
+      let final = temp;
+      codeBlocks.forEach((block, index) => {
+        final = final.replace(`[[CODE_BLOCK_${index}]]`, block);
+      });
+      setApiResponse(final);
+    }, 25 * typeArray.length + 100);
+
+    setIsLoading(false);
+  };
 
   return (
     <div className="chat-main">
@@ -118,7 +121,6 @@ const HandleSend = async () => {
           />
         </div>
       </div>
-      
 
       <div className="chat-body">
         <div className="chat-header">
@@ -129,19 +131,23 @@ const HandleSend = async () => {
               alt="Expand"
               onClick={() => setIsBar(!isBar)}
             />
-            <div className="mobile-menu">
-              
-            </div>
+
+            v.
+
             <div
               className="ai-name"
-              style={{ marginLeft: `${isBar ? 270 : 70}px` }}
+              style={{ marginLeft: `${isBar ? 270 : 0}px` }}
             >
               AI-Divie
               {/* <img src={myIcons.AiDivieLogo} alt="" className="aiDivieLogo" /> */}
             </div>
           </div>
           <div>
-            <img className="chat-profile-img" src={myIcons.gibliImage} alt="image" />
+            <img
+              className="chat-profile-img"
+              src={myIcons.gibliImage}
+              alt="image"
+            />
           </div>
         </div>
         <div className="chat-main-content">
@@ -173,18 +179,18 @@ const HandleSend = async () => {
                   src={myIcons.aiDivieImg}
                   alt=""
                 />
-                {isLoading ?
+                {isLoading ? (
                   <div className="chat-loading-animation">
-                    <hr className="loading-hr "/>
+                    <hr className="loading-hr " />
                     <hr className="loading-hr " />
                     <hr className="loading-hr" />
                   </div>
-                :
+                ) : (
                   <div
                     dangerouslySetInnerHTML={{ __html: apiResponse }}
                     className="response-text"
                   />
-                }
+                )}
               </div>
             </div>
           )}
