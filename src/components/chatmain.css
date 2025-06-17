@@ -497,8 +497,10 @@
         letter-spacing: 1px;
     }
     .response-text {
-        font-size: clamp(1rem, 2.8vw, 1.5rem);
+        margin-top: 10px;
+        font-size: clamp(1.1rem, 2.8vw, 1.5rem);
         line-height: 1.3;
+        font-weight: 300;
     }
     .code-block {
         padding:10px;
