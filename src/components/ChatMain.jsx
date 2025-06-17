@@ -32,14 +32,12 @@ const ChatMain = () => {
     setIsResponse(true);
     setLastPrompt(prompt);
     setPrevPrompts((prev) => [prompt,...prev]);
-    console.log(prevPrompts);
     setPrompt("");
     setIsLoading(true);
 
     let response = await runChat(prompt);
-    console.log(response);
 
-    // ✅ Extract code blocks and replace with placeholders
+    //Extract code blocks and replace with placeholders
     const codeBlocks = [];
     response = response.replace(/```([\s\S]*?)```/g, (match, code) => {
       const escapedCode = `<pre class="code-block"><code>${escapeHtml(
@@ -92,6 +90,14 @@ const ChatMain = () => {
 
     setIsLoading(false);
   };
+
+  const HandleEnter=(e)=>{
+    if(e.key==="Enter" && !e.ShiftKey){
+      e.preventDefault();
+      HandleSend(prompt);
+
+    }
+  }
 
   return (
     <div className="chat-main">
@@ -278,17 +284,21 @@ const ChatMain = () => {
           </div>
         </div>
         <div className="chat-main-content">
+          
+
           {!isResponse && (
-            <div className="chat-home-heading">
-              Hi Developer , Welcome to AI-Divie
+            <div className="welcome-container">
+              <div className="chat-home-content-heading">
+                Welcome to AI-Divie
+              </div>
+              <div className="chat-home-content-subheading">
+                <span className="highlight">AI-Divie</span> - Your Personal AI Assistant
+                <br />
+                
+              </div>
             </div>
           )}
-          {!isResponse && (
-            <div className="chat-home-subheading">
-              Welcome to the AI- Divie . Divie stands for My Small World ( "
-              Meri Choti si Duniya.. " )
-            </div>
-          )}
+
 
           {isResponse && (
             <div className="chat-response-container">
@@ -331,6 +341,7 @@ const ChatMain = () => {
                 value={prompt}
                 placeholder="How can i help you ?"
                 onChange={(e) => setPrompt(e.target.value)}
+                onKeyDown={HandleEnter}
               />
             </div>
             <div className="search-body-second">
