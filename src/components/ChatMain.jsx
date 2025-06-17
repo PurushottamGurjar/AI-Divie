@@ -146,7 +146,7 @@ const ChatMain = () => {
                   />
                   <div
                     className="ai-name"
-                    style={{fontSize:'20px', marginTop:"3px"}}
+                    style={{fontSize:'20px', marginTop:"3px" , color:"white"}}
                    
                   >
                   Menu
