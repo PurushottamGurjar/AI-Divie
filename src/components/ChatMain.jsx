@@ -280,6 +280,7 @@ const ChatMain = () => {
               className="chat-profile-img"
               src={myIcons.gibliImage}
               alt="image"
+              onClick={()=>window.open("https://purushottam-gurjar.vercel.app" ,"_blank")}
             />
           </div>
         </div>

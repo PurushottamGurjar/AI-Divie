@@ -143,6 +143,7 @@
     box-sizing: border-box;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    overflow: scroll;
 }
 
 .mobile-setting{
@@ -194,6 +195,9 @@
     gap:15px;
     font-size:17px;
     
+}
+.each-recent-prompt:hover{
+    color:white;
 }
 .recent-prompt-item{
     display:flex;
