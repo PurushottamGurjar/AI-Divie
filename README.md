@@ -1,12 +1,52 @@
-# React + Vite
+#  AI-Divie — Your Personal AI Assistant
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AI-Divie is a lightweight, responsive AI chatbot built using the **Gemini Free API**, designed to assist in everyday tasks, multi-language coding help, and serve as a backup when other AI platforms go down (like ChatGPT).
 
-Currently, two official plugins are available:
+Built by [Purushottam Gurjar](https://www.linkedin.com/in/purushottam-gurjar/), this project is a self-reliant response to AI outages and a tool for continuous learning and coding assistance.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🔥 Why AI-Divie?
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+When ChatGPT unexpectedly went down, I realized how much I relied on AI in my daily routine.  
+Instead of waiting, I created my own assistant — **AI-Divie** — to support me no matter what.
+
+Whether you're coding, researching, or just exploring ideas, AI-Divie is here to help, 24/7.
+
+---
+## Live Demo  
+Check out the live here in AI-Divie Section:  
+🌐 [https://purushottam-gurjar.vercel.app](https://purushottam-gurjar.vercel.app)
+
+
+
+## 📸 Preview
+
+![Ai-Divie HomePage](https://github.com/user-attachments/assets/85bde8f9-a5a9-4a55-865e-79d9ce17db6c)
+
+
+## ✨ Features
+
+- ✅ Real-time AI chat powered by **Gemini Free API**
+- 🌐 Fully **responsive design** — mobile & desktop optimized
+- 🧠 Supports **multi-language coding queries**
+- 🎯 Can assist in day-to-day productivity tasks
+- 🚀 Minimal, fast, and accessible
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** HTML, CSS, JavaScript (React)
+- **AI Backend:** Google Gemini API (Free Tier)
+- **Hosting:** Vercel
+
+---
+🙋‍♂️ **Author**  
+Made with ❤️ by **Purushottam Gurjar**  
+🔗 GitHub: [https://github.com/PurushottamGurjar](https://github.com/PurushottamGurjar)  
+🔗 LinkedIn: [https://linkedin.com/in/purushottam-gurjar](https://linkedin.com/in/purushottam-gurjar)
+
+ 
+
+---
