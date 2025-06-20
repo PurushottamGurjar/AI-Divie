@@ -9,6 +9,7 @@ import mic_icon from "./mic.svg";
 import aiDivieImg from "./aiDivieImg.png"
 import gibliImage from "./gibliImage.jpeg"
 import AiDivieLogo from "./AiDivieLogo.png"
+import codeBoy from "./codeBoy.png"
 
 export const myIcons={
     camera_icon,
@@ -21,5 +22,6 @@ export const myIcons={
     mic_icon,
     aiDivieImg,
     gibliImage,
-    AiDivieLogo
+    AiDivieLogo,
+    codeBoy
 }
