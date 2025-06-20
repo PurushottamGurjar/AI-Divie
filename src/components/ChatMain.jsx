@@ -35,7 +35,7 @@ const ChatMain = () => {
     setPrompt("");
     setIsLoading(true);
 
-    let response = await runChat(prompt);
+    let response = await fetch(`https://ai-divie-backend.onrender.com/${prompt}`);
 
     //Extract code blocks and replace with placeholders
     const codeBlocks = [];
