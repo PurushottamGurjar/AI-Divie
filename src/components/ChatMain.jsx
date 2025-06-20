@@ -39,8 +39,9 @@ const ChatMain = () => {
     // console.log(response);
 
     const safePrompt = String(prompt || "").replace(/ /g, "+");
-    let response = await fetch(`https://ai-divie-backend.onrender.com/${safePrompt}`);
-    console.log(response);
+    let res = await fetch(`https://ai-divie-backend.onrender.com/${safePrompt}`);
+    let response = await res.text(); // ✅ convert Response to string
+    console.log("Received response:", response);
 
     //Extract code blocks and replace with placeholders
     const codeBlocks = [];
