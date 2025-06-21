@@ -35,7 +35,7 @@ const ChatMain = () => {
     setPrompt("");
     setIsLoading(true);
 
-    // let response = await fetch(`https://ai-divie-backend.onrender.com/${prompt}`);
+    // let response = await runChat(prompt);
     // console.log(response);
 
     const safePrompt = String(prompt || "").replace(/ /g, "+");
@@ -58,18 +58,19 @@ const ChatMain = () => {
     let newboldArray = "";
     for (let i = 0; i < resArray.length; i++) {
       if (i % 2 === 1) {
-        newboldArray += "<b>" + resArray[i] + "</b>";
+        newboldArray +="<br> <br>"+ "<b>" + resArray[i] + "</b>" ;
       } else {
         newboldArray += resArray[i];
       }
     }
 
     // replacing * ; with break
-    let newbrArray = newboldArray.split("*").join("<br><br>");
-    newbrArray = newbrArray.split(";").join("<br>");
+    let newbrArray = newboldArray.split("*").join("");
+    // let newbrArray = newboldArray.split("*")
 
     // numerating the reesponse
-    newbrArray = newbrArray.replace(/(?<!<br>)\s*(\d+\.)/g, "<br>$1");
+    newbrArray = newbrArray.replace(/(^|\s)\d+\.\s*/g, "$1");
+    // newbrArray = newbrArray.replace(/(?<!<br>)\s*(\d+\.)/g, "<br>$1");
 
     const typeArray = newbrArray.split(" ");
 
